@@ -1,4 +1,6 @@
+package com.megaamoonguss.quadraticcalccmd;
 import java.util.ArrayList;
+
 public class Factor {
 
 	public static ArrayList<Integer> factor (int num) {

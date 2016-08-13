@@ -1,20 +1,18 @@
-import java.util.*;
+package com.megaamoonguss.quadraticcalccmd;
+
 public class Runner {
 
 	public static void main(String[] args) {
 
-		Scanner kbd = new Scanner (System.in);
-		int a, b, c;
-		boolean again = true;
-
-		System.out.println("\n***************************");
-		System.out.println("QUADRATIC FACTORING PROGRAM");
-		System.out.println("***************************\n");
-		while (again) {
-			System.out.println("Enter a, then b, then c (ax^2 + bx + c):");
-			a = kbd.nextInt();
-			b = kbd.nextInt();
-			c = kbd.nextInt();
+		if (args.length > 3) {
+			returnUsage();
+			System.exit(0);
+		}
+		
+		try {
+			int a = parseInt(args[0]);
+			int b = parseInt(args[1]);
+			int c = parseInt(args[2]);
 
 			Quadratic quad = new Quadratic (a, b, c);
 
@@ -34,14 +32,28 @@ public class Runner {
 				else
 					System.out.println("- " + factoredEquation[3] * -1 + ")");
 			}
-
-			System.out.println("\nAgain? y/n");
-			if (kbd.next().equals("y"))
-				again = true;
-			else again = false;
-			System.out.println("");
+		} catch (ArrayIndexOutOfBoundsException e) {
+			returnUsage();
 		}
-		kbd.close();
 	}
 
+	public static int parseInt(String s) {
+		try {
+			if (s == null) {
+				returnUsage();
+				System.exit(0);
+				return 0;
+			} else {
+				return Integer.parseInt(s);
+			}
+		} catch (final NumberFormatException ex) {
+			returnUsage();
+			System.exit(0);
+			return 0;
+		}
+	}
+	
+	public static void returnUsage() {
+		System.out.println("Usage: java -jar quadcalc.jar [args...]\nwhere args are three integers a, b, and c to solve ax^2 + bx + c.");
+	}
 }

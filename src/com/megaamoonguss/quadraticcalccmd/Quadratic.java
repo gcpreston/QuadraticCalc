@@ -1,4 +1,6 @@
-import java.util.*;
+package com.megaamoonguss.quadraticcalccmd;
+import java.util.ArrayList;
+
 public class Quadratic {
 
 	private int a, b, c;
