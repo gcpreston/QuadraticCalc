@@ -1,4 +1,3 @@
-package com.grahampreston.quadraticcalc;
 import java.util.ArrayList;
 public class Factor {
 
